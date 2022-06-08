@@ -1,1 +1,14 @@
 <h1> Welcome to the Home Page </h1>
+
+
+<% if customer_signed_in? %>
+      <%= link_to 'Sign out as Customer', destroy_customer_session_path, method: :delete %>
+    <% elsif !contractor_signed_in? %> 
+      <%= link_to 'Log in as Customer', new_customer_session_path %> 
+    <% end %>
+
+    <% if contractor_signed_in? %>
+      <%= link_to 'Sign out as Contractor', destroy_contractor_session_path, method: :delete %>
+    <% elsif !customer_signed_in? %> 
+      <%= link_to 'Log in as Contractor', new_contractor_session_path %> 
+    <% end %>
